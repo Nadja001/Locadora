@@ -42,6 +42,13 @@ def filme_listar(request):
     }
     return render(request, "filmes/filmes.html",context)
 
+def filme_detalhe(request, id):
+    filme = get_object_or_404(Filme, id=id)
+    context = {
+        'filme': filme
+    }
+    return render(request, "filmes/filme_detalhe.html", context)
+
 def index(request):
     total_filmes = Filme.objects.count()
     context = {

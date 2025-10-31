@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import filme_criar, filme_editar, filme_remover, filme_listar, index
+from .views import filme_criar, filme_detalhe, filme_editar, filme_remover, filme_listar, index
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('filme/editar/<int:id>/',filme_editar, name='filme_editar'),
     path('filme/remover/<int:id>/',filme_remover,name='filme_remover'),
     path('filme/listar',filme_listar,name='filme_listar'),
+     path('filme/<int:id>/', filme_detalhe, name='filme_detalhe'),
 ]

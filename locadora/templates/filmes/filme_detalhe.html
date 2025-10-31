@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ filme.titulo }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f9f9f9; }
+        .filme { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+        img { border-radius: 4px; margin-top: 10px; max-width: 100%; }
+        a { color: #007BFF; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="filme">
+        <h1>{{ filme.titulo }} ({{ filme.ano_lancamento }})</h1>
+        <p><strong>Gênero:</strong> {{ filme.genero }}</p>
+        <p><strong>Duração:</strong> {{ filme.duracao }} min</p>
+        <p><strong>Sinopse:</strong><br>{{ filme.sinopse }}</p>
+        {% if filme.imagem %}
+            <img src="{{ filme.imagem.url }}" alt="{{ filme.titulo }}">
+        {% endif %}
+        <p>
+            <a href="{% url 'filme_editar' filme.id %}">✏️ Editar</a> |
+            <a href="{% url 'filme_remover' filme.id %}">🗑️ Remover</a> |
+            <a href="{% url 'filme_listar' %}">← Voltar</a>
+        </p>
+    </div>
+</body>
+</html>

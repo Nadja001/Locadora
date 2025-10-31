@@ -27,6 +27,7 @@
                 <img src="{{ filme.imagem.url }}" alt="{{ filme.titulo }}" width="150">
             {% endif %}
             <p>
+                <a href="{% url 'filme_detalhe' filme.id %}">🔍 Ver detalhes</a>
                 <a href="{% url 'filme_editar' filme.id %}">✏️ Editar</a>
                 <a href="{% url 'filme_remover' filme.id %}">🗑️ Remover</a>
             </p>
