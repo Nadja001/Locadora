@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Locadora</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 80px; background-color: #eef2f3; }
+        h1 { font-size: 2.5em; color: #333; }
+        p { font-size: 1.2em; margin: 20px 0; }
+        a { padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px; }
+        a:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>🎬 Bem-vindo à Locadora!</h1>
+    <p>Total de filmes cadastrados: <strong>{{ total_filmes }}</strong></p>
+    <a href="{% url 'filme_listar' %}">Ver todos os filmes</a>
+</body>
+</html>

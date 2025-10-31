@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Filmes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f9f9f9; }
+        h1 { color: #333; }
+        .filme { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        img { border-radius: 4px; margin-top: 10px; }
+        a { color: #007BFF; text-decoration: none; margin-right: 10px; }
+        a:hover { text-decoration: underline; }
+        .novo-filme { display: inline-block; margin-bottom: 20px; padding: 10px 15px; background-color: #28a745; color: white; border-radius: 5px; text-decoration: none; }
+        .novo-filme:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+    <h1>🎥 Filmes cadastrados</h1>
+    <a class="novo-filme" href="{% url 'filme_criar' %}">+ Cadastrar novo filme</a>
+    {% for filme in filmes %}
+        <div class="filme">
+            <h2>{{ filme.titulo }} ({{ filme.ano_lancamento }})</h2>
+            <p><strong>Gênero:</strong> {{ filme.genero }}<br>
+               <strong>Duração:</strong> {{ filme.duracao }} min</p>
+            <p>{{ filme.sinopse }}</p>
+            {% if filme.imagem %}
+                <img src="{{ filme.imagem.url }}" alt="{{ filme.titulo }}" width="150">
+            {% endif %}
+            <p>
+                <a href="{% url 'filme_editar' filme.id %}">✏️ Editar</a>
+                <a href="{% url 'filme_remover' filme.id %}">🗑️ Remover</a>
+            </p>
+        </div>
+    {% empty %}
+        <p>Nenhum filme cadastrado.</p>
+    {% endfor %}
+</body>
+</html>
